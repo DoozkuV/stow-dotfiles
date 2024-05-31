@@ -126,3 +126,5 @@ source /usr/share/fzf/completion.zsh
 
 # Load wal themes
 cat $HOME/.cache/wal/sequences
+
+# vim: set filetype=zsh:

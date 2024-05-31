@@ -20,3 +20,5 @@ export LSP_USE_PLISTS=true
 command -V bat &> /dev/null && \
     export MANPAGER="sh -c 'col -bx | bat -l man -p'" && \
     export MANROFFOPT="-c" # Fix formatting
+
+# vim: set filetype=zsh:
