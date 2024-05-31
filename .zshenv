@@ -1,0 +1,1 @@
+/home/doozku/.config/zsh/.zshenv

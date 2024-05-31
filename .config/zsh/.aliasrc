@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+# Neovim commands 
+alias vim="nvim"
+alias v="nvim"
+
+alias nnote="nvim -c ObsidianQuickSwitch"
+alias nday="nvim -c ObsidianToday"
+
+alias ngit="nvim -c Neogit"
+# This alias allows us to fzf with previews to open neovim 
+# The 'head -500' command is there to prevent files that are
+# too large from being read, thus slowing down fzf. 
+alias fv="fd --type f --hidden --exclude .git | fzf -m --bind one:accept --preview 'bat --style numbers,changes --color=always {} | head -500' | xargs -r nvim"
+nvim_config_path="~/.config/nvim"
+alias nvconf="cd $nvim_config_path && fv"
+
+# Neovim "scratch buffer" script
+# alias x="scratch"
+
+obsidian_dir="$HOME/Documents/Obsidian/second-brain"
+alias obdocs="fd -t f -e '.pdf' . $obsidian_dir | \
+    fzf | xargs -I '{}' zathura --fork '{}'"
+
+alias sm='apropos .  | fzf --preview "man {1} 2> /dev/null" | awk "{print \$2 \" \" \$1}" | tr -d "()" | xargs man 2> /dev/null' 
+
+# Create a new terminal window in the same directory
+alias dup="setsid -f $TERMINAL >/dev/null 2>&1"
+
+alias grep="rg"
+# alias doom="~/.config/emacs/bin/doom"
+alias ll="ls -al"
+
+# lf aliases 
+alias lf="lfub"
+
+alias ytu="ytfzf -tT 'wayland'"
+alias ytpst="wl-paste | xargs ytfzf -a"

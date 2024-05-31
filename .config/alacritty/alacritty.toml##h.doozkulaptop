@@ -1,0 +1,26 @@
+# import = [
+#   "~/.config/alacritty/catppuccin-mocha.toml"
+# ]
+[bell]
+animation = "EaseOutExpo"
+color = "#ffffff"
+duration = 2
+
+[cursor.vi_mode_style]
+blinking = "Always"
+shape = "Block"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "monospace"
+
+[shell]
+args = ["--login"]
+program = "/bin/zsh"
+
+[window]
+opacity = 0.00
+
+# vim: set filetype=toml:

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+required_packages="$HOME/.config/yadm/required-packages.txt"
+
+if [ ! -f "$required_packages" ]; then
+    echo "Error: $required_packages not found!"
+    exit 1
+fi
+
+bat $required_packages
+

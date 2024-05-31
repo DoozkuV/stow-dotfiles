@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Check for the correct number of arguments
+if [ "$#" -eq 0 ]; then
+    echo "Usage: $0 package1 [package2 ...]"
+    exit 1
+fi
+
+required_packages="$HOME/.config/yadm/required-packages.txt"
+
+if [ ! -f "$required_packages" ]; then
+    echo "Error: $required_packages not found!"
+    exit 1
+fi
+
+# Loop through each provided package name
+for package in "$@"; do
+    # Use grep to remove lines containing the package name
+    grep -v "$package" $required_packages > temp.txt
+    # Replace original file with the temporary file
+    mv temp.txt $required_packages
+done

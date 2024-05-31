@@ -1,0 +1,45 @@
+# See https://wiki.hyprland.org/Configuring/Monitors/
+monitor=eDP-1,1920x1080@144,0x0,1
+monitor=,preferred,auto,1,mirror,eDP-1
+
+$hyprPath=~/.config/hypr
+
+source=$hyprPath/input.conf
+
+source=$hyprPath/decorations.conf
+
+# Layouts - Master or Dwindle
+source=$hyprPath/layout.conf
+
+source=$hyprPath/binds.conf
+
+source=$hyprPath/workspace-rules.conf
+
+source=$hyprPath/startup.conf
+
+
+# CUSTOM STUFF BEGINS HERE
+unbind = SUPER, W
+bind = SUPER, W, killactive
+
+# VIRTUAL MACHINE BINDINGS
+bind = SUPER, M, workspace, name:vm
+bind = SUPER SHIFT, M, movetoworkspacesilent, name:vm
+
+bind = SUPER SHIFT, F1, exec, sudo virsh shutdown "win10"
+bind = SUPER SHIFT, F2, exec, sudo virsh reset "win10"
+
+# Make looking-glass only appear in "vm" workspace
+windowrule=workspace name:vm silent,class:(looking-glass-client) 
+
+# ASUSCTL Commands
+bind = ,XF86Launch4, exec, profile-toggle
+#
+# SET THEMES
+env = GTK_THEME,Catppuccin-Mocha-Standard-Pink-Dark:dark
+# env = HYPRCURSOR_THEME,theme_Catppuccin-Mocha-Rosewater-Cursors
+# env = HYPRCURSOR_SIZE,40
+
+
+
+# vim: set filetype=hyprlang:
