@@ -1,0 +1,7 @@
+#!/bin/sh
+
+required_packages="$HOME/.config/yadm/required-packages.txt"
+
+test ! -f "$required_packages" && touch $required_packages
+
+echo $@ >> $required_packages

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$(supergfxctl -g)" != "Hybrid" ]; then 
+    notify-send -t 1000 "VM is starting"
+    sudo virsh start "win10" && looking-glass-client -F -S \
+						     input:rawMouse 
+fi
+
