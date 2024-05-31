@@ -1,7 +1,7 @@
 # Export scripts direcotry
 export PATH="$PATH:$HOME/dotfiles/scripts"
 
-export BROWSER="thorium-browser"
+export BROWSER="firefox"
 export TERMINAL="foot"
 export EDITOR="nvim"
 export VISUAL="nvim"
