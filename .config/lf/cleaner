@@ -1,6 +1,0 @@
-#!/bin/sh
-# if [ "$TERM" = "xterm-256color" ]; then
-# 	wezterm imgcat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
-if [ -n "$FIFO_UEBERZUG" ]; then
-	printf '{"action": "remove", "identifier": "PREVIEW"}\n' > "$FIFO_UEBERZUG"
-fi

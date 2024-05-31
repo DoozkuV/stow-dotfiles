@@ -1,6 +1,0 @@
-#!/bin/sh
-
-file_path="$HOME/Pictures/Screenshots/$(date +'%m-%e-%y:%H-%M-%S.png')"
-grim -g "$(slurp -d)" $file_path
-
-notify-send "Screenshot saved to $file_path" 
