@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# This API returns the current location in JSON format
+CONTENT=$(curl -s http://ip-api.com/json/)
+
+longitude=$(echo $CONTENT | jq .lon)
+latitude=$(echo $CONTENT | jq .lat)
+
+command -V wlsunset && wlsunset -l latitude -L longitude &
