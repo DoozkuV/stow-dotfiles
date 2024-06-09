@@ -4,6 +4,7 @@ local act = wezterm.action
 local module = {}
 
 local leader = { key = ' ', mods = 'CTRL', timeout_milliseconds = 2500 }
+local LDR = 'LEADER' -- convenience constant
 local keybinds = {
     -- Command Palette
     {
@@ -15,7 +16,7 @@ local keybinds = {
     -- Pane Manipulation
     {
         key = 'v',
-        mods = 'LEADER',
+        mods = LDR,
         action = act.SplitPane {
             direction = 'Left',
             size = { Percent = 50 },
@@ -23,19 +24,45 @@ local keybinds = {
     },
     {
         key = 's',
-        mods = 'LEADER',
+        mods = LDR,
         action = act.SplitVertical {},
     },
     {
         key = 'c',
-        mods = 'LEADER',
+        mods = LDR,
         action = act.CloseCurrentPane { confirm = false },
     },
     {
         key = 'z',
-        mods = 'LEADER',
+        mods = LDR,
         action = wezterm.action.TogglePaneZoomState,
     },
+
+    -- Pane Direction
+    { key = 'h', mods = LDR,    action = act.ActivatePaneDirection 'Left', },
+    { key = 'h', mods = "CTRL", action = act.ActivatePaneDirection 'Left', },
+    { key = 'l', mods = LDR,    action = act.ActivatePaneDirection 'Right', },
+    { key = 'l', mods = "CTRL", action = act.ActivatePaneDirection 'Right', },
+    { key = 'k', mods = LDR,    action = act.ActivatePaneDirection 'Up', },
+    { key = 'k', mods = "CTRL", action = act.ActivatePaneDirection 'Up', },
+    { key = 'j', mods = LDR,    action = act.ActivatePaneDirection 'Down', },
+    { key = 'j', mods = "CTRL", action = act.ActivatePaneDirection 'Down', },
+
+    -- Tab Manipulation
+    {
+        key = 't',
+        mods = LDR,
+        action = act.SpawnTab 'CurrentPaneDomain',
+    },
+    {
+        key = 'x',
+        mods = LDR,
+        action = act.CloseCurrentTab { confirm = true },
+    },
+    { key = 'h', mods = 'META|SHIFT', action = act.ActivateTabRelative(-1) },
+    { key = 'l', mods = 'META|SHIFT', action = act.ActivateTabRelative(1) },
+
+
 
     -- Copying and Pasting
     {
@@ -53,16 +80,18 @@ local keybinds = {
 
 
     -- Scrollback Binds
-    { key = 'k', mods = 'ALT', action = act.ScrollByLine(1) },
-    { key = 'j', mods = 'ALT', action = act.ScrollByLine(-1) },
+    { key = 'k', mods = 'META',       action = act.ScrollByLine(-1) },
+    { key = 'j', mods = 'META',       action = act.ScrollByLine(1) },
 
-    { key = 'u', mods = 'ALT', action = act.ScrollByPage(0.5) },
-    { key = 'd', mods = 'ALT', action = act.ScrollByPage(-0.5) },
+    { key = 'u', mods = 'META',       action = act.ScrollByPage(-0.5) },
+    { key = 'd', mods = 'META',       action = act.ScrollByPage(0.5) },
+    { key = 'g', mods = 'SHIFT|META', action = act.ScrollToTop },
+
 
     -- Search
     -- {
     --         key = '/',
-    --         mods = 'LEADER',
+    --         mods = LDR,
     --         action = act.Search
     --     }
 }
