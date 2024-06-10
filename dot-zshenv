@@ -2,7 +2,7 @@
 export PATH="$PATH:$HOME/dotfiles/scripts"
 
 export BROWSER="firefox"
-export TERMINAL="foot"
+export TERMINAL="wezterm"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
