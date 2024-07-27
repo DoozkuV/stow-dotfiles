@@ -1,5 +1,6 @@
+# -*- mode: shell-script; -*-
 # Export scripts direcotry
-export PATH="$PATH:$HOME/dotfiles/scripts"
+export PATH="$PATH:$HOME/dotfiles/scripts:$HOME/.local/bin"
 
 export BROWSER="firefox"
 export TERMINAL="wezterm"

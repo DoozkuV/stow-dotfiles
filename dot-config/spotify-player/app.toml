@@ -30,7 +30,7 @@ args = [
 ]
 
 [device]
-name = "spotify-player"
+name = "spotify-player-laptop"
 device_type = "speaker"
 volume = 70
 bitrate = 160

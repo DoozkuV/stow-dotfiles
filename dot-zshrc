@@ -1,3 +1,4 @@
+# -*- mode: shell-script; -*-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=10000
@@ -128,3 +129,10 @@ source /usr/share/fzf/completion.zsh
 cat $HOME/.cache/wal/sequences
 
 # vim: set filetype=zsh:
+
+# bun completions
+[ -s "/home/doozku/.bun/_bun" ] && source "/home/doozku/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
