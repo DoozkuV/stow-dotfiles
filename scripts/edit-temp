@@ -1,0 +1,7 @@
+#!/bin/sh 
+
+file="$(mktemp --suffix "$1")"
+
+echo "Created file $file" 
+
+$EDITOR $file
