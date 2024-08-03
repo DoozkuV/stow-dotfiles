@@ -52,16 +52,26 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;}
 
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lfub -last-dir-path="$tmp" "$@" # lfub is my custom lf wrapper for img support
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+# Switching this to Yazi for now
+# lfcd () {
+#     tmp="$(mktemp)"
+#     lfub -last-dir-path="$tmp" "$@" # lfub is my custom lf wrapper for img support
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         rm -f "$tmp"
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
+# }
+# bindkey -s '^o' 'lfcd\n'
+function yy() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd" 
     fi
+    rm -f -- "$tmp"
 }
-bindkey -s '^o' 'lfcd\n'
+bindkey -s '^o' 'yy\n'
 
 # Set a keybind to auto run doas !!
 bindkey -s '^r' 'doas !!\n'
@@ -125,3 +135,6 @@ source /usr/share/fzf/completion.zsh
 
 
 # vim: set filetype=zsh:
+
+# bun completions
+[ -s "/home/doozku/.bun/_bun" ] && source "/home/doozku/.bun/_bun"

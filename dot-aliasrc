@@ -38,3 +38,7 @@ alias ytu="ytfzf -tT 'wayland'"
 alias ytpst="wl-paste | xargs ytfzf -a"
 
 alias stow="stow --dotfiles"
+
+# Misc aliases
+alias ollamupdate="ollama list | awk 'NR>1 {print \$1}' | xargs -I {} sh -c \"echo
+\"Updating model: {}\"; ollama pull {}; echo '--'\" && echo \"All models updated.\""

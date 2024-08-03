@@ -1,8 +1,8 @@
 # Export scripts direcotry
-export PATH="$PATH:$HOME/dotfiles/scripts"
+export PATH="$PATH:$HOME/dotfiles/scripts:$HOME/.bun/bin:/home/doozku/.local/bin"
 
 export BROWSER="firefox"
-export TERMINAL="foot"
+export TERMINAL="wezterm"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
